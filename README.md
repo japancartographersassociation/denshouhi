@@ -1,6 +1,7 @@
 # denshouhi
 日本地図学会 自然災害伝承碑 アーカイブズ
 
+<img width="1488" alt="スクリーンショット 2022-02-22 9 08 33" src="https://user-images.githubusercontent.com/416977/155079187-19889eb7-b6be-4807-abe5-942c167797aa.png">
 
 
 ## 自然災害伝承碑アーカイブズ
