@@ -1,0 +1,24 @@
+name: Backup jca_spots.csv
+on:
+  schedule:
+    - cron: "5 * * * *"
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set current datetime as env variable
+        env:
+          TZ: "Asia/Tokyo"
+        run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+      - name: wget
+        run: wget -O ${{ env.DATE }}.csv https://monumen.to/jca_spots.csv
+        working-directory: data
+      - name: Commit downloaded file
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add *.csv > /dev/null 2>&1
+          git commit -m "Backup at ${{ env.DATE }}" > /dev/null 2>&1
+          git push origin main
